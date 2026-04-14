@@ -27,9 +27,9 @@ void loop() {
    milivolts = analogReadMilliVolts(ADC_PIN);
   ucalc = adcValue * 3300 / 4095; // Calculate the voltage in millivolts based on the ADC value (assuming a 3.3V reference and 12-bit resolution)  
 
-  Serial.println(adcValue);
-  Serial.println(milivolts);
-  Serial.println(ucalc);
+  Serial.println("ADC "+String(adcValue));
+  Serial.println("MILIVOLTS "+String(milivolts));
+  Serial.println("CALC "+String(ucalc));
   Serial.print("похибка: ");
    Serial.print(String(static_cast<float>(ucalc) / static_cast<float>(milivolts) * 100.0f-100));
      Serial.println(" %");
