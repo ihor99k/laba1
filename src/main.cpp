@@ -19,7 +19,8 @@ int16_t ucalc = 0;
 
 void setup() {
    Serial.begin(115200);
- 
+ // analogReadResolution(9);
+  analogSetPinAttenuation(ADC_PIN, ADC_0db);
 }
 
 void loop() {
