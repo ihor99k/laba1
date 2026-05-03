@@ -80,20 +80,17 @@ class LED {
       void configAsInterrupt (const buttonConfig& cfg) {
           config = cfg;
           pinMode(config.pin, config.pull == HIGH ? INPUT_PULLUP : INPUT_PULLDOWN);
-          attachInterruptArg(digitalPinToInterrupt(config.pin), isrHandler, this, config.interruptType) ;
+          attachInterruptArg(digitalPinToInterrupt(config.pin), isrHandler, this, config.interruptType) ; //ця функція дозволяє прив'язати обробник переривання до конкретного піну та передати в нього аргумент (у цьому випадку, вказівник на об'єкт Button1). Це дозволяє обробнику отримувати доступ до стану кнопки та виконувати необхідні дії при спрацьовуванні переривання.
         }
       bool wasPressed() {
         bool flag = false;
-
         noInterrupts();
         flag = interruptState;
         interruptState = false;
         interrupts();
-
         if (!flag) {
           return false;
         }
-
         uint32_t now = millis();
 
         if ((now - lastPressTime) < config.debounceDelay) {
@@ -128,9 +125,7 @@ class LED {
   }
  void loop() {
     static uint32_t timestamp = 0;
-    static uint32_t lastMeasureTime = micros();
-    static uint32_t loops = 0;
-    loops++;
+    
 
      uint32_t now = millis();
 
@@ -157,7 +152,9 @@ class LED {
             }
              break;
            }
-       
+   static uint32_t lastMeasureTime = micros();
+    static uint32_t loops = 0;
+    loops++;    
    
   if (loops >= 1000) {
     uint32_t now = micros();
