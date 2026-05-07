@@ -25,7 +25,7 @@ struct buttonConfig {  //налаштуваня кнопки в одному м�
     uint16_t debounceDelay ;
   };
 //constexpr buttonConfig Button1config{99, LOW , RISING, 100};  //ініціалізація Кнопки з констекспер
-constexpr ledconfig Led1Config[3]{ {11, 200, 5}, {13, 500, 5}, {14, 1000, 5} }; // ініціалізація Леду з констекспер
+constexpr ledconfig Led1Config[3]{ {12, 200, 5}, {13, 500, 5}, {14, 1000, 5} }; // ініціалізація Леду з констекспер
 constexpr uint8_t led_count = std::size(Led1Config);
 
 
